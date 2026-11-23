@@ -18,11 +18,13 @@ Das vorhandene Spawning, der Score und der Sieg bei zehn Treffern sind **Ausgang
 **1. Auftrag**
 
 *Ablauf*
+
 Sobald man das Spiel starten, beginnen Zielscheiben sich zufällig auf dem Bildschirm zu verteilen. Sobald der Player mit einem Linksklick auf eine der Zielscheiben trifft, erhöht sich der Score um +1. Bei 10 Punkten wird das Gewinn-Bild eingeblendet und es werden keine neuen Ziele mehr erzeugt.
 
 **Bereits implementierte Funktionen**
 
 *GameManager*
+
 Start() -> starten mit InvokeRepeating("Spawn", 1f, 1f) das Erzeugen der Ziele (erstes Ziel nach einer Sekunde, danach jede Sekunde)
 
 Update() -> läuft jeden Frame. Wenn 'win' true ist, wird das Spawnen mit CancelInvoke gestoppt. Bei jedem Linksklick wird außerdem der Schuss-Sound abgespielt (durch eine Audiosource)
@@ -32,6 +34,7 @@ Spawn() -> berechnet eine zufällige Position und erzeugt mit Instantiate eine K
 IncrementScore() -> erhöht den Punktestand um 1 und schreibt ihn in scoreText ab. Ab 10 Punkten wird win auf true gesetzt und winSprite angezeigt.
 
 *Target*
+
 Start() -> sucht den GameManager in der Szene und speichert die Referenz. Zerstört das Ziel nach 2 Sekunden, falls es nicht getroffen wird.
 
 OnMouseDown() -> wird beim Anklicken des Ziels aufgerufen (braucht einen Collider). Ruft IncrementScore() auf und zerstört das Ziel sofort.
