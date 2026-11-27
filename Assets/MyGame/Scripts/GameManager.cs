@@ -133,6 +133,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
+    public void PlayHitSound(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(clip);
+        }
+    }
+
     public void AddScore(int points)
     {
         if (!isRunning) return;

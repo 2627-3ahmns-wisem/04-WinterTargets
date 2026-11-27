@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Target : MonoBehaviour
@@ -8,6 +9,12 @@ public class Target : MonoBehaviour
     public float lifeTime = 2f;
     public float maxX = 365f;
     public float maxY = 202f;
+
+    //P05: hit feedback
+    public AudioClip hitSound;              
+    public float hitAnimationTime = 0.25f;  
+    public float hitScaleFactor = 1.6f; 
+
     private Vector2 direction;
     private bool alreadyHit = false;
 
@@ -22,6 +29,9 @@ public class Target : MonoBehaviour
 
     private void Update()
     {
+        //P05: a hit target does not move anymore
+        if (alreadyHit) return;
+
         Vector2 position = transform.localPosition;
         position += direction * speed * Time.deltaTime;
 
@@ -47,6 +57,36 @@ public class Target : MonoBehaviour
         alreadyHit = true;
 
         gameManager.AddScore(points);
+
+        
+        gameManager.PlayHitSound(hitSound);
+
+       
+        StartCoroutine(HitAnimation());
+    }
+
+    
+    private IEnumerator HitAnimation()
+    {
+       
+        GetComponent<Collider2D>().enabled = false;
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        Vector3 startScale = transform.localScale;
+        Color startColor = spriteRenderer.color;
+
+        float time = 0f;
+        while (time < hitAnimationTime)
+        {
+            time += Time.deltaTime;
+            float t = time / hitAnimationTime;
+
+            transform.localScale = startScale * Mathf.Lerp(1f, hitScaleFactor, t);
+            spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, 1f - t);
+
+            yield return null; 
+        }
+
         Destroy(gameObject);
     }
 }

@@ -143,3 +143,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   points: 10
+  speed: 150
+  lifeTime: 2
+  maxX: 365
+  maxY: 202
+  hitSound: {fileID: 8300000, guid: 40f4c7e214c51dd4088d70239b880309, type: 3}
+  hitAnimationTime: 0.5
+  hitScaleFactor: 1.6

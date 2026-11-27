@@ -50,3 +50,25 @@ OnMouseDown() -> wird beim Anklicken des Ziels aufgerufen (braucht einen Collide
 -> Spiel testen, Fehler beheben und dokumentieren
 
 
+
+
+
+## Assets und Quellen
+
+Background | https://at.pinterest.com/pin/712694709809470902/
+
+
+Schneemann-Snoopy | https://at.pinterest.com/pin/389772542771292210/
+
+
+Eisblock-Snoopy | https://at.pinterest.com/pin/120471358769832898/
+
+
+Geschenk-Snoopy | https://at.pinterest.com/pin/856317316687637699/
+
+
+Treffer-Sound | https://pixabay.com/de/sound-effects/search/ice%20cube/
+
+
+Fail-Sound | https://pixabay.com/de/sound-effects/search/fail/
+
