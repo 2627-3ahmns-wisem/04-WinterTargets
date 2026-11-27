@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d1d074944e9e47049b788c72239fb50d
+guid: d4f81d49fc58f4d408aa99a8ecd0fcee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9054859495563422477
-    second: Geschenk_0
+      213: -7927763611698331419
+    second: "Snoopy Eisw\xFCrfel_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Geschenk_0
+      name: "Snoopy Eisw\xFCrfel_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 683
-        height: 741
+        width: 790
+        height: 830
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d0b612c8cb259ad70800000000000000
-      internalID: 9054859495563422477
+      spriteID: 5e0047d8ffceaf190800000000000000
+      internalID: -7927763611698331419
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Geschenk_0: 9054859495563422477
+      "Snoopy Eisw\xFCrfel_0": -7927763611698331419
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

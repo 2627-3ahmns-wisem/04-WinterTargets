@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     
-    public GameObject schneemannTarget; 
-    public GameObject eisblockTarget;   
-    public GameObject geschenkTarget;   
+    public GameObject snowmanTarget; 
+    public GameObject icecubeTarget;   
+    public GameObject presentTarget;   
 
     public GameObject parentOfTargets;
     public GameObject winSprite;
@@ -58,15 +58,15 @@ public class GameManager : MonoBehaviour
 
         if (randomNumber < 60)
         {
-            return schneemannTarget;
+            return snowmanTarget;
         }
         else if (randomNumber < 90)
         {
-            return eisblockTarget;
+            return icecubeTarget;
         }
         else
         {
-            return geschenkTarget;
+            return presentTarget;
         }
     }
 
