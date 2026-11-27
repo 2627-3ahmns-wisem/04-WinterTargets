@@ -4,6 +4,9 @@ public class Target : MonoBehaviour
 {
     public GameManager gameManager;
 
+    public int points = 10;
+    private bool alreadyHit = false;
+
     private void Start()
     {
         //create a reference to the GameManager script
@@ -13,8 +16,11 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //call the IncrementScore() method from the GameManager Script
-        gameManager.IncrementScore();
+        if (alreadyHit) return;
+        alreadyHit = true;
+
+        //give the points of this target to the GameManager
+        gameManager.AddScore(points);
         Destroy(gameObject);
     }
 }
