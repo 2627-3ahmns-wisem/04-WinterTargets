@@ -3,18 +3,17 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public GameManager gameManager;
-
     public int points = 10;
-    public float speed = 150f;
-    public float lifeTime = 2f;   
+    public float speed = 150f;   
+    public float lifeTime = 2f;
     public float maxX = 365f;
     public float maxY = 202f;
-
     private Vector2 direction;
     private bool alreadyHit = false;
 
     private void Start()
     {
+        //create a reference to the GameManager script
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         direction = Random.insideUnitCircle.normalized;
 
@@ -44,10 +43,9 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (alreadyHit) return;
+        if (alreadyHit || !gameManager.IsRunning) return;
         alreadyHit = true;
 
-        //give the points of this target to the GameManager
         gameManager.AddScore(points);
         Destroy(gameObject);
     }

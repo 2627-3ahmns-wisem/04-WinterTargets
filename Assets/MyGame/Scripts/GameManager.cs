@@ -3,45 +3,109 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    
-    public GameObject snowmanTarget; 
-    public GameObject icecubeTarget;   
-    public GameObject presentTarget;   
-
+    public GameObject schneemannTarget;
+    public GameObject eisblockTarget;
+    public GameObject geschenkTarget;
     public GameObject parentOfTargets;
     public GameObject winSprite;
     public Text scoreText;
-
-    //P01: points needed to win (adjustable in the Inspector)
+    public Text timeText; 
+    public Text resultText;
+    public float roundDuration = 60f;
     public int winScore = 100;
-
     private int score = 0;
-    private bool win = false;
+    private float timeLeft;
+    private bool isRunning = false;
+
+    public bool IsRunning
+    {
+        get { return isRunning; }
+    }
 
     private void Start()
     {
-        scoreText.text = score.ToString();
-        InvokeRepeating("Spawn", 1f, 1f);
+        StartRound();
     }
 
     private void Update()
     {
-        //if the player reaches winScore, the player has won and the Spawn method will not be called further.
-        if (win)
-        {
-            CancelInvoke("Spawn");
-        }
-
         //every shoot (clicking left mouse button) produce a shooting sound.
-        if (Input.GetMouseButtonDown(0))
+        if (isRunning && Input.GetMouseButtonDown(0))
         {
             gameObject.GetComponent<AudioSource>().Play();
         }
+
+        if (isRunning)
+        {
+            timeLeft -= Time.deltaTime;
+
+            if (timeLeft <= 0f)
+            {
+                timeLeft = 0f;
+                EndRound();
+            }
+
+            UpdateTimeText();
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                StartRound();
+            }
+        }
     }
 
-    //Spawn a target at a random position within a specified x and y range.
+    public void StartRound()
+    {
+        foreach (Transform child in parentOfTargets.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        score = 0;
+        timeLeft = roundDuration;
+        isRunning = true;
+
+        scoreText.text = score.ToString();
+        UpdateTimeText();
+        winSprite.SetActive(false);
+        resultText.gameObject.SetActive(false);
+
+        CancelInvoke("Spawn");
+        InvokeRepeating("Spawn", 1f, 1f);
+    }
+    private void EndRound()
+    {
+        isRunning = false;
+        CancelInvoke("Spawn");
+        foreach (Transform child in parentOfTargets.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        if (score >= winScore)
+        {
+            winSprite.SetActive(true);
+            resultText.text = "Gewonnen! " + score + " Punkte\nR = neue Runde";
+        }
+        else
+        {
+            resultText.text = "Zeit abgelaufen! " + score + " Punkte\nR = neue Runde";
+        }
+
+        resultText.gameObject.SetActive(true);
+    }
+
+    private void UpdateTimeText()
+    {
+        timeText.text = Mathf.CeilToInt(timeLeft).ToString();
+    }
+
     private void Spawn()
     {
+        if (!isRunning) return;
+
         float randomX = Random.Range(-365f, 365f);
         float randomY = Random.Range(-202f, 202f);
 
@@ -51,39 +115,29 @@ public class GameManager : MonoBehaviour
         newTarget.transform.localPosition = random2DPosition;
     }
 
-
     private GameObject ChooseTargetType()
     {
         int randomNumber = Random.Range(0, 100);
 
         if (randomNumber < 60)
         {
-            return snowmanTarget;
+            return schneemannTarget;
         }
         else if (randomNumber < 90)
         {
-            return icecubeTarget;
+            return eisblockTarget;
         }
         else
         {
-            return presentTarget;
+            return geschenkTarget;
         }
     }
 
-    //is called in the class Target
     public void AddScore(int points)
     {
-        if (win) return;
+        if (!isRunning) return;
 
         score += points;
-        print(score);
-
         scoreText.text = score.ToString();
-
-        if (score >= winScore)
-        {
-            win = true;
-            winSprite.SetActive(true);
-        }
     }
 }
