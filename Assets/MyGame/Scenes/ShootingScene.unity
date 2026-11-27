@@ -770,10 +770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34cbe36b907671418aeb6cb6c5d45b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - {fileID: 4591863265193547165, guid: 8231af953bb0e89419196a7873c28127, type: 3}
-  - {fileID: 4591863265193547165, guid: 2202d3caff9e037419a538176368c9bb, type: 3}
-  - {fileID: 4591863265193547165, guid: 671e207be26a8c54aae6de6407ead7dc, type: 3}
+  schneemannTarget: {fileID: 4591863265193547165, guid: 671e207be26a8c54aae6de6407ead7dc, type: 3}
+  eisblockTarget: {fileID: 4591863265193547165, guid: 8231af953bb0e89419196a7873c28127, type: 3}
+  geschenkTarget: {fileID: 4591863265193547165, guid: 2202d3caff9e037419a538176368c9bb, type: 3}
   parentOfTargets: {fileID: 958871934}
   winSprite: {fileID: 73667832}
   scoreText: {fileID: 821733796}
