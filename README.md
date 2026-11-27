@@ -15,7 +15,7 @@ Das Paket **Unity UI (uGUI)** ist unter `Packages/manifest.json` als `com.unity.
 Das vorhandene Spawning, der Score und der Sieg bei zehn Treffern sind **Ausgangscode**. Schüler:innen erweitern diese Mechaniken anhand der GitHub-Issues. Der Erstimport ist eine Ausgangsversion; keine Aufgaben sind vorweg implementiert.
 
 
-**1. Auftrag**
+##**1. Auftrag**
 
 *Ablauf*
 
@@ -42,12 +42,12 @@ OnMouseDown() -> wird beim Anklicken des Ziels aufgerufen (braucht einen Collide
 
 *Geplante Änderungen* 
 
--> Zieltypen unterschiedlichen Punktewerten
--> Zieltypen mit Wahrscheinlichkeiten
--> Bewegte Ziele
--> Countdown und neue Spielende-Regeln
--> Winterliches Design mit Sound und Trefferanimation
--> Spiel testen, Fehler beheben und dokumentieren
+-> Zieltypen unterschiedlichen Punktewerten.
+-> Zieltypen mit Wahrscheinlichkeiten.
+-> Bewegte Ziele.
+-> Countdown und neue Spielende-Regeln.
+-> Winterliches Design mit Sound und Trefferanimation.
+-> Spiel testen, Fehler beheben und dokumentieren.
 
 
 
